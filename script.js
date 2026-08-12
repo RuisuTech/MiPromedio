@@ -1,39 +1,50 @@
-const btnAbrir = document.getElementById("btn-abrir");
-const btnCerrar = document.getElementById("btn-cerrar");
-const navMenu = document.getElementById("nav-menu");
+const btnAbrir = document.getElementById('btn-abrir');
+const btnCerrar = document.getElementById('btn-cerrar');
+const navMenu = document.getElementById('nav-menu');
+const calcularBtn = document.getElementById('calcular');
+const resultadoSpan = document.querySelector('#resultado span');
 
-btnAbrir.addEventListener("click", () => {
-  navMenu.style.transition = ".5s";
-  navMenu.style.opacity = "1";
-  navMenu.style.display = "flex";
-  btnAbrir.style.display = "none";
-  btnCerrar.style.display = "block";
+function openMenu() {
+  navMenu.classList.add('active');
+  btnAbrir.style.display = 'none';
+  btnCerrar.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  navMenu.classList.remove('active');
+  btnAbrir.style.display = 'block';
+  btnCerrar.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+btnAbrir.addEventListener('click', openMenu);
+btnCerrar.addEventListener('click', closeMenu);
+
+navMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      closeMenu();
+    }
+  });
 });
 
-btnCerrar.addEventListener("click", () => {
-  navMenu.style.opacity = "0";
-  btnAbrir.style.display = "block";
-  btnCerrar.style.display = "none";
-});
-
-const ajustarMenu = () => {
-  if (window.innerWidth > 798) {
-    navMenu.style.display = "flex";
-    navMenu.style.opacity = "1";
-    btnAbrir.style.display = "none";
-    btnCerrar.style.display = "none";
+function handleResize() {
+  if (window.innerWidth > 768) {
+    navMenu.classList.remove('active');
+    btnAbrir.style.display = 'none';
+    btnCerrar.style.display = 'none';
+    document.body.style.overflow = '';
   } else {
-    navMenu.style.transition = "0s";
-    navMenu.style.opacity = "0";
-    btnAbrir.style.display = "block";
-    btnCerrar.style.display = "none";
+    btnAbrir.style.display = 'block';
+    btnCerrar.style.display = 'none';
   }
-};
+}
 
-window.addEventListener("resize", ajustarMenu);
-window.addEventListener("load", ajustarMenu);
+window.addEventListener('resize', handleResize);
+window.addEventListener('load', handleResize);
 
-document.getElementById('calcular').addEventListener('click', function () {
+function calculateAverage() {
   const nota1 = parseFloat(document.getElementById('nota1').value);
   const valor1 = parseFloat(document.getElementById('valor1').value);
   const nota2 = parseFloat(document.getElementById('nota2').value);
@@ -50,5 +61,14 @@ document.getElementById('calcular').addEventListener('click', function () {
   }
 
   const promedio = (nota1 * valor1 / 100) + (nota2 * valor2 / 100);
-  document.querySelector('#resultado span').textContent = promedio.toFixed(2);
+  resultadoSpan.textContent = promedio.toFixed(2);
+}
+
+calcularBtn.addEventListener('click', calculateAverage);
+
+document.getElementById('formulario').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    calculateAverage();
+  }
 });

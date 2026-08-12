@@ -3,65 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculadora de promedios académicos elegante y minimalista" />
+    <meta name="theme-color" content="#0a0a0f" />
     <link rel="stylesheet" href="style.css" />
     <title>Mi Promedio</title>
   </head>
   <body>
+    <!-- Sakura decorations -->
+    <div class="sakura sakura-1" aria-hidden="true">&#x273F;</div>
+    <div class="sakura sakura-2" aria-hidden="true">&#x273F;</div>
+
     <header>
-      <a href="#">LOGO</a>
-      <nav id="nav-menu">
+      <a href="#" class="logo">Mi Promedio</a>
+      <nav id="nav-menu" aria-label="Menú principal">
         <ul>
-          <li><a href="#">Sobre Mí</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="#calculadora">Calculadora</a></li>
         </ul>
       </nav>
-      <button class="btn-abrir" id="btn-abrir" type="button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-        >
-          <path fill="#ffffff" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
+      <button class="btn-abrir" id="btn-abrir" type="button" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
         </svg>
       </button>
-
-      <button class="btn-cerrar" id="btn-cerrar" type="button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="none"
-            stroke="#ffffff"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M18 6L6 18M6 6l12 12"
-          />
+      <button class="btn-cerrar" id="btn-cerrar" type="button" aria-label="Cerrar menú">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12" />
         </svg>
       </button>
     </header>
+
     <main>
       <section id="calculadora">
         <h1>Calculadora de Promedio</h1>
-        <form id="formulario">
+        <form id="formulario" novalidate>
           <div class="input-group">
-            <label for="nota1">Nota 1:</label>
-            <input class="input-data"
+            <label for="nota1">Nota 1</label>
+            <input
+              class="input-data"
               type="number"
               id="nota1"
-              placeholder="Nota"
+              placeholder="0-100"
               step="1"
               min="0"
               max="100"
               required
+              aria-required="true"
             />
-            <label for="valor1">Valor (%):</label>
-            <input class="input-data"
+            <label for="valor1">Valor (%)</label>
+            <input
+              class="input-data"
               type="number"
               id="valor1"
               placeholder="%"
@@ -69,21 +59,25 @@
               min="0"
               max="100"
               required
+              aria-required="true"
             />
           </div>
           <div class="input-group">
-            <label for="nota2">Nota 2:</label>
-            <input class="input-data"
+            <label for="nota2">Nota 2</label>
+            <input
+              class="input-data"
               type="number"
               id="nota2"
-              placeholder="Nota"
+              placeholder="0-100"
               step="1"
               min="0"
               max="100"
               required
+              aria-required="true"
             />
-            <label for="valor2">Valor (%):</label>
-            <input class="input-data"
+            <label for="valor2">Valor (%)</label>
+            <input
+              class="input-data"
               type="number"
               id="valor2"
               placeholder="%"
@@ -91,15 +85,21 @@
               min="0"
               max="100"
               required
+              aria-required="true"
             />
           </div>
-          <button class="btn-calcular" type="button" id="calcular">Calcular Promedio</button>
+          <button class="btn-calcular" type="button" id="calcular">
+            Calcular Promedio
+          </button>
         </form>
         <h2 id="resultado">Tu promedio: <span>---</span></h2>
       </section>
     </main>
 
-    <footer></footer>
+    <footer>
+      <p>&copy; 2024 Mi Promedio. Calculadora de promedios académicos.</p>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
