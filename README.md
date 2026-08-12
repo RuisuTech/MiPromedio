@@ -49,7 +49,7 @@ No se requieren variables de entorno. La aplicación es estática y funciona sin
 
 ## Captura de Pantalla
 
-![Mi Promedio - Calculadora de Promedio](docs/screenshots/promedio.png)
+![Mi Promedio - Calculadora de Promedio](docs/screenshots/brave_screenshot.png)
 
 ## Estructura de Carpetas
 
